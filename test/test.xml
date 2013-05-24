@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<table>
+    <database>
+        <connection>
+            <server>localhost</server>
+            <username>root</username>
+            <password>root</password>
+        </connection>
+        <table>
+            <name>test</name>
+        </table>
+    </database>
+    <csv>
+        <delimiter>|</delimiter>
+        <enclosure>"</enclosure>
+        <escape>\</escape>
+        <ignored>
+            <rows>1</rows>
+            <!-- First Lines of the CSV who where ignored -->
+            <columns>0</columns>
+            <!-- First Columns of the CSV who where ignored when match Code = false -->
+        </ignored>
+    </csv>
+    <match>
+        <code>true</code><!-- true/false -->
+        <combine>true</combine><!-- true/false -->
+        <trim>true</trim>
+    </match>
+    <columns>
+        <column>
+            <name>fname</name>
+            <matchcode>firstname</matchcode>
+        </column>
+        <column>
+            <name>sname</name>
+            <matchcode>lastname</matchcode>
+        </column>
+        <column>
+            <name>email</name>
+            <matchcode>email</matchcode>
+        </column>
+        <column>
+            <name>location</name>
+            <matchcode>city</matchcode>
+        </column>
+        <column>
+            <name>street</name>
+            <matchcode>street</matchcode>
+        </column>
+        <column>
+            <name>street</name>
+            <matchcode>nr</matchcode>
+            <combinedelimiter> </combinedelimiter>
+        </column>
+    </columns>
+</table>
