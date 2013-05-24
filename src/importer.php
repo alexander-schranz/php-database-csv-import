@@ -14,6 +14,8 @@ class CsvImporter {
     protected $file;
     protected $csv;
     
+    protected $importedData;
+    
     function __construct( $path, $file, $config, $csv = '')
     {
         $this->path = $path;
@@ -26,13 +28,19 @@ class CsvImporter {
     {
         $this->converter = new CsvImporter_Converter( $this->path, $this->file, $this->config, $this->csv = '');
         
-        $importData = $this->converter->convert();
+        $this->importedData = $this->converter->convert();
         
+        // TODO insert Array into Table
         echo '<pre>';
-        var_dump ($importData);
+        var_dump ($this->importedData);
         exit();
         
         return false;
+    }
+    
+    public function getImportedData()
+    {
+        return $this->importedData;
     }
     
     public function getConverter()
