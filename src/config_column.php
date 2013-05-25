@@ -1,4 +1,7 @@
 <?php
+/**
+ * version 0.1
+ */
 
 class CsvImporter_Config_Column {
     protected $name;
