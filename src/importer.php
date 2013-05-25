@@ -1,6 +1,6 @@
 <?php 
 /**
- * version 0.0.1a
+ * version 0.1
  */
 
 require_once(dirname(__FILE__) . '/config.php');

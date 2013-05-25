@@ -1,6 +1,6 @@
 <?php
 /**
- * version 0.0.1a
+ * version 0.1
  */
 
 class CsvImporter_csv {
