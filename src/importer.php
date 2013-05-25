@@ -5,10 +5,12 @@
 
 require_once(dirname(__FILE__) . '/config.php');
 require_once(dirname(__FILE__) . '/converter.php');
+require_once(dirname(__FILE__) . '/database.php');
 
 class CsvImporter {
     protected $converter;
     protected $config;
+    protected $database = null;
     
     protected $path;
     protected $file;
@@ -30,12 +32,15 @@ class CsvImporter {
         
         $this->importedData = $this->converter->convert();
         
-        // TODO insert Array into Table
-        echo '<pre>';
-        var_dump ($this->importedData);
-        exit();
-        
-        return false;
+        return $this->getDatabase()->insert($this->config->getTable(), $this->importedData);
+    }
+    
+    protected function getDatabase()
+    {
+        if ( $this->database == null) {
+            $this->database = new CsvImporter_Database($this->config->getDatabaseServer(), $this->config->getDatabaseUsername(), $this->config->getDatabasePassword(), $this->config->getDatabase());
+        }
+        return $this->database;
     }
     
     public function getImportedData()
