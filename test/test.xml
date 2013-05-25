@@ -5,6 +5,7 @@
             <server>localhost</server>
             <username>root</username>
             <password>root</password>
+            <database>test</database>
         </connection>
         <table>
             <name>test</name>

@@ -10,6 +10,7 @@ class CsvImporter_Config {
     protected $configpath;
     
     // Database
+    private $database;
     private $databaseServer;
     private $databaseUsername;
     private $databasePassword;
@@ -40,6 +41,7 @@ class CsvImporter_Config {
         
         // Database
         $this->setProperty('databaseServer', $configXml->database->connection->server)
+            ->setProperty('database', $configXml->database->connection->database)
             ->setProperty('databaseUsername', $configXml->database->connection->username)
             ->setProperty('databasePassword', $configXml->database->connection->password)
             
@@ -196,7 +198,7 @@ class CsvImporter_Config {
      */
      public function getTable()
      {
-        return $this->getTable;
+        return $this->table;
      }
      
      public function setTable($table)
@@ -216,19 +218,24 @@ class CsvImporter_Config {
         return $this;
     }
     
+    public function getDatabase()
+    {
+        return $this->database;
+    }
+    
     public function getDatabaseServer()
     {
-        $this->databaseServer;
+        return $this->databaseServer;
     }
     
     public function getDatabaseUsername()
     {
-        $this->databaseUsername;
+        return $this->databaseUsername;
     }
     
     public function getDatabasePassword()
     {
-        $this->databasePassword;
+        return $this->databasePassword;
     }
     
     /**
