@@ -1,17 +1,9 @@
 <?php 
-/**
- * version 1.0.1
- * Release Candidate
- */
-
-require_once(dirname(__FILE__) . '/Config.php');
-require_once(dirname(__FILE__) . '/Converter.php');
-require_once(dirname(__FILE__) . '/Database.php');
 
 class CsvImporter {
     protected $converter;
     protected $config;
-    protected $database = null;
+    protected $database;
     
     protected $path;
     protected $file;
@@ -19,28 +11,51 @@ class CsvImporter {
     
     protected $importedData;
     
-    function __construct( $path, $file, $config, $csv = '')
+    function __construct(  $config, $database, $path, $file, $csv = '')
     {
+        $this->config = $config;
+        $this->database = $database;
         $this->path = $path;
         $this->file = $file;
-        $this->config = $config;
         $this->csv = $csv;
     }
     
-    public function import() 
+    public function import($deleteFile = false, $backupFile = false, $backupFolder = '') 
     {
-        $this->converter = new CsvImporter_Converter( $this->path, $this->file, $this->config, $this->csv = '');
+        $this->converter = new CsvImporter_Converter( $this->path, $this->file, $this->config, $this->csv);
         
         $this->importedData = $this->converter->convert();
         
-        return $this->getDatabase()->insert($this->config->getTable(), $this->importedData);
+        $return = $this->getDatabase()->insert($this->config->getTable(), $this->importedData);
+        
+        if ($return) {
+            // backUpFile
+            $this->backupFile($backupFile, $backupFolder);
+            // deleteFile
+            $this->deleteFile($deleteFile);
+        }
+        
+        return $return;
+    }
+    
+    protected function backupFile ($backupFile, $backupFolder) {
+        // backupFile
+        if ($backupFile) {
+            if ($backupFolder == '') {
+                $backupFolder = dirname(__FILE__) . '/backups';
+            }
+            copy ($this->path . '/' . $this->file, $backupFolder . '/'. date('Ymd-His') . '.backup.csv');
+        }
+    }
+    
+    protected function deleteFile ($deleteFile) {
+        if ($deleteFile) {
+            unlink ($this->path . '/' . $this->file);
+        }
     }
     
     protected function getDatabase()
     {
-        if ( $this->database == null) {
-            $this->database = new CsvImporter_Database($this->config->getDatabaseServer(), $this->config->getDatabaseUsername(), $this->config->getDatabasePassword(), $this->config->getDatabase());
-        }
         return $this->database;
     }
     

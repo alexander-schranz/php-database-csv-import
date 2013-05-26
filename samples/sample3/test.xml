@@ -19,40 +19,30 @@
         <ignored>
             <rows>1</rows>
             <!-- First Lines of the CSV who where ignored -->
-            <columns>0</columns>
+            <columns>1</columns>
             <!-- First Columns of the CSV who where ignored when match Code = false -->
         </ignored>
     </csv>
     <match>
-        <code>true</code><!-- true/false -->
-        <combine>true</combine><!-- true/false -->
+        <code>false</code><!-- true/false -->
+        <combine>false</combine><!-- true/false -->
         <trim>true</trim><!-- true/false -->
     </match>
     <columns>
         <column>
             <name>fname</name>
-            <matchcode>firstname</matchcode>
         </column>
         <column>
             <name>sname</name>
-            <matchcode>lastname</matchcode>
         </column>
         <column>
             <name>email</name>
-            <matchcode>email</matchcode>
         </column>
         <column>
             <name>location</name>
-            <matchcode>city</matchcode>
         </column>
         <column>
             <name>street</name>
-            <matchcode>street</matchcode>
-        </column>
-        <column>
-            <name>street</name>
-            <matchcode>nr</matchcode>
-            <combinedelimiter> </combinedelimiter>
         </column>
     </columns>
 </table>
