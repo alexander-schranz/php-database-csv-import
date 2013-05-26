@@ -1,6 +1,6 @@
 <?php
 /**
- * version 0.1
+ * version 1.0RC
  */
 
 require_once(dirname(__FILE__) . '/csv.php');
