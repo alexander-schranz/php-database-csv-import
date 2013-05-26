@@ -1,6 +1,6 @@
 <?php 
 /**
- * version 0.1
+ * version 1.0RC
  */
 
 class CsvImporter_Database {
