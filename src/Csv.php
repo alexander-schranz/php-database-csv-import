@@ -1,8 +1,4 @@
 <?php
-/**
- * version 1.0.1
- * Release Candidate
- */
 
 class CsvImporter_csv {
     protected $path = '';

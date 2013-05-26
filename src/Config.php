@@ -1,10 +1,4 @@
 <?php
-/**
- * version 1.0.1
- * Release Candidate
- */
-
-require_once (dirname(__FILE__) . '/Config_Column.php');
 
 class CsvImporter_Config {
     
@@ -41,8 +35,8 @@ class CsvImporter_Config {
         $configXml = simplexml_load_file ($configpath);
         
         // Database
-        $this->setProperty('databaseServer', $configXml->database->connection->server)
-            ->setProperty('database', $configXml->database->connection->database)
+        $this->setProperty('database', $configXml->database->connection->database)
+            ->setProperty('databaseServer', $configXml->database->connection->server)
             ->setProperty('databaseUsername', $configXml->database->connection->username)
             ->setProperty('databasePassword', $configXml->database->connection->password)
             
@@ -211,8 +205,9 @@ class CsvImporter_Config {
     /**
      * Database Connection
      */
-    public function setDatabaseConnection ($server, $username, $password)
+    public function setDatabaseConnection ($server, $database, $username, $password)
     {
+        $this->database = $database;
         $this->databaseServer = $server;
         $this->databaseUsername = $username;
         $this->databasePassword = $password;

@@ -7,9 +7,7 @@
 <h1>Samples</h1>
 <ul>
 <?php 
-    if ($handle = opendir('.')) {
-
-    /* This is the correct way to loop over the directory. */
+if ($handle = opendir('.')) {
     while (false !== ($entry = readdir($handle))) {
         if (!(strpos($entry, '.') !== false)) { // Only Folders
             echo '<li>
