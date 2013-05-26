@@ -1,9 +1,10 @@
 <?php
 /**
- * version 1.0RC
+ * version 1.0.1
+ * Release Candidate
  */
 
-require_once (dirname(__FILE__) . '/config_column.php');
+require_once (dirname(__FILE__) . '/Config_Column.php');
 
 class CsvImporter_Config {
     

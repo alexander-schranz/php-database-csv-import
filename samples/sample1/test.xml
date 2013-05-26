@@ -25,7 +25,7 @@
     <match>
         <code>true</code><!-- true/false -->
         <combine>true</combine><!-- true/false -->
-        <trim>true</trim>
+        <trim>true</trim><!-- true/false -->
     </match>
     <columns>
         <column>
