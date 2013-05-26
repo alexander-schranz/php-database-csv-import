@@ -1,6 +1,5 @@
 <?php
-require_once( '../../src/Importer.php' );
-require_once( '../../src/Config.php' );
+require_once( '../../src/classloader.php' );
 
 $configfile = dirname(__FILE__) . '\test.xml';
 
