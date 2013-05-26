@@ -1,11 +1,4 @@
 <?php
-/**
- * version 1.0.1
- * Release Candidate
- */
-
-require_once(dirname(__FILE__) . '/Csv.php');
-require_once(dirname(__FILE__) . '/Config.php');
 
 class CsvImporter_Converter {
     protected $csv;
