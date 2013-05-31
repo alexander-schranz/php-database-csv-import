@@ -13,8 +13,10 @@ class CsvImporter_Converter {
         $delimiter = $this->config->getDelimiter();
         $enclosure = $this->config->getEnclosure();
         $escape = $this->config->getEscape();
+
+        $utf_encode = $this->config->doUtf8_encode();
         
-        $this->csv = new CsvImporter_csv($csv,  $path, $file, $delimiter, $enclosure, $escape);
+        $this->csv = new CsvImporter_csv($csv,  $path, $file, $delimiter, $enclosure, $escape, $utf_encode);
     }
     
     public function convert()
@@ -29,6 +31,7 @@ class CsvImporter_Converter {
             $lineCounter = 0;
             // Get Every Line vom CSS
             foreach ($data as $line) {
+
                 // Only get Lines where not Ignored
                 if ($lineCounter >= $this->config->getIgnoredRows()) {
                     $data = array();
@@ -76,6 +79,9 @@ class CsvImporter_Converter {
         if (count($data[0]) > 0) {
             $counter = 0;
             foreach ($data[0] as $column) {
+                if ($this->config->doTrim()) {
+                    $column = trim($column);
+                }
                 if ($this->config->hasMatchCodes()) {
                     $matchCodes[$column] = $counter + $this->config->getIgnoredColumns();
                 } else {
