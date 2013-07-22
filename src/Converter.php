@@ -83,6 +83,9 @@ class CsvImporter_Converter {
                     $column = trim($column);
                 }
                 if ($this->config->hasMatchCodes()) {
+                    if ($this->config->doTrim()) {
+                        $column = trim($column);
+                    }
                     $matchCodes[$column] = $counter + $this->config->getIgnoredColumns();
                 } else {
                     $matchCodes[$counter] = $counter + $this->config->getIgnoredColumns();
