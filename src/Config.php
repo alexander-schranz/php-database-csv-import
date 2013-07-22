@@ -24,6 +24,8 @@ class CsvImporter_Config {
     private $delimiter;
     private $enclosure;
     private $escape;
+
+    private $utf8_encode;
     
     // Columns
     private $columns = array();
@@ -49,6 +51,7 @@ class CsvImporter_Config {
             ->setProperty('delimiter', $configXml->csv->delimiter)
             ->setProperty('enclosure', $configXml->csv->enclosure)
             ->setProperty('escape', $configXml->csv->escape)
+            ->setProperty('utf8_encode', $configXml->csv->utf8_encode)
             ->setPropertyInt('ignoredRows', $configXml->csv->ignored->rows)
             ->setPropertyInt('ignoredColumns', $configXml->csv->ignored->columns);
             
@@ -160,6 +163,11 @@ class CsvImporter_Config {
     {
         return $this->ignoredColumns;
     }
+
+    public function doUtf8_encode()
+    {
+        return $this->utf8_encode;
+    }
     
     public function setDelimiter ($delimiter)
     {
@@ -188,6 +196,12 @@ class CsvImporter_Config {
     public function setIgnoredColumns($ignoredColumns)
     {
         $this->ignoredColumns = $ignoredColumns;
+        return $this;
+    }
+
+    public function setUtf8_encode($bool)
+    {
+        $this->utf8_encode = $bool;
         return $this;
     }
     

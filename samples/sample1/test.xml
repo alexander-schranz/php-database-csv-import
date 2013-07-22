@@ -16,6 +16,7 @@
         <delimiter>|</delimiter>
         <enclosure>"</enclosure>
         <escape>\</escape>
+        <utf8_encode>false</utf8_encode><!-- true/false -->
         <ignored>
             <rows>1</rows>
             <!-- First Lines of the CSV who where ignored -->

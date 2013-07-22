@@ -44,7 +44,7 @@ class CsvImporter {
             if ($backupFolder == '') {
                 $backupFolder = dirname(__FILE__) . '/backups';
             }
-            copy ($this->path . '/' . $this->file, $backupFolder . '/'. date('Ymd-His') . '.backup.csv');
+            copy ($this->path . '/' . $this->file, $backupFolder . '/'. date('Ymd-His') . '_'.round(microtime(true) * 1000).'.backup.csv');
         }
     }
     
