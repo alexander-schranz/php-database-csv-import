@@ -56,6 +56,9 @@ class CsvImporter_Config {
         foreach ($configXml->columns[0] as $xmlColumn) {        
             $name = $this->convertProperty($xmlColumn->name);
             $matchCode = $this->convertProperty($xmlColumn->matchcode);
+            if ($this->doTrim()) {
+                $matchCode = trim($matchCode);
+            }
             $combineDelimiter = $this->convertProperty($xmlColumn->combinedelimiter);
             
             $column = new CsvImporter_Config_Column($name, $matchCode, $combineDelimiter);
