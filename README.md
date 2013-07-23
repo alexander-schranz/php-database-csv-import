@@ -7,8 +7,6 @@ Changelog
 1.1.1
  - Bugfix #10: Trim Matchcodes in Converter
 
-
-Changelog
 1.1
  - Add utf8_encode to config
  - Add Zend Databaseadapter
