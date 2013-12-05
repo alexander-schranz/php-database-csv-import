@@ -5,6 +5,9 @@ A library to import data from a csv file into a database table based on a XML fi
 
 Changelog
 =======================
+1.1.2
+ - Bugfix #16: check if column exist before access
+
 1.1.1
  - Bugfix #10: Trim Matchcodes in Converter
 
