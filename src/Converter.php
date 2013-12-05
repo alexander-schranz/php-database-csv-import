@@ -41,9 +41,17 @@ class CsvImporter_Converter {
                     foreach ($this->config->getColumns() as $column) {
                         // Get Line Column Property
                         if ($this->config->hasMatchCodes()) {
-                            $property = $line[$matchCodes[$column->getMatchCode()]];
+                            if (!isset($matchCodes[$column->getMatchCode()]) || !isset($line[$matchCodes[$column->getMatchCode()]])) {
+                                continue;
+                            } else {
+                                $property = $line[$matchCodes[$column->getMatchCode()]];
+                            }
                         } else {
-                            $property = $line[$matchCodes[$counter]];
+                            if (!isset($matchCodes[$counter]) || !isset($line[$matchCodes[$counter]])) {
+                                continue;
+                            } else {
+                                $property = $line[$matchCodes[$counter]];
+                            }
                         }
                         
                         // Trim Data
